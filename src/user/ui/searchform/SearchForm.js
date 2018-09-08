@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+var showdown  = require('showdown')
 
 class SearchForm extends Component {
   constructor (props) {
@@ -55,6 +56,10 @@ class SearchForm extends Component {
       records.map(record => {
         try{
           const metadata = JSON.parse(record.metadata.replace(", }", "}"))
+
+          var converter = new showdown.Converter()
+          var htmlMetadata  = converter.makeHtml(metadata["preview"])   
+
           let price = 0
 
           listings.forEach( (listing) => {
@@ -65,12 +70,12 @@ class SearchForm extends Component {
 
           if(price != 0){
             return (
-              <div key={record.dataHash}>
+              <div className='frameit' key={record.dataHash}>
+                <h3 className='price'>ETH {price}</h3>
                 <h2>University: {metadata["university"]}</h2>
                 <h3>Course Name: {metadata["course-name"]}</h3>
-                <p className='price'>Price: {price} eth</p>
                 {buyButton(record.dataHash, price)}
-                <p>Preview: {metadata["preview"]}</p>
+                <div dangerouslySetInnerHTML={{ __html: htmlMetadata }} ></div>
                 <p>Owner: {record.owner}</p>
                 <br />
               </div>);

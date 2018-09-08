@@ -79,6 +79,7 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "safe-buffer": "^5.1.2",
+    "showdown": "^1.8.6",
     "truffle-contract": "^3.0.6",
     "web3": "^1.0.0-beta.34"
   },
