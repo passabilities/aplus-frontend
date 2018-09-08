@@ -46,6 +46,10 @@ class SearchForm extends Component {
           <br />
 
           <button type='submit' className='pure-button pure-button-primary'>Search</button>
+          <div style={{display: 'flex', flexDirection: 'column', marginTop: '20px', marginBottom: '20px', padding: '5px', borderStyle: "solid"}}>
+            <div style={{display:"inline", margin:"10px"}}><i className="fas fa-check-circle fa-2x" style={{color:"green"}}></i> A verified Expert from the a+plus Expert List has attested to the quality of these notes. </div>
+            <div style={{display:"inline", margin:"10px"}}><i className="fas fa-circle fa-2x" style={{color:"green"}}></i> A Non-expert has attested to the quality of these notes.</div>
+          </div>
         </fieldset>
       </form>;
 
@@ -71,6 +75,7 @@ class SearchForm extends Component {
           if(price != 0){
             return (
               <div className='frameit' key={record.dataHash}>
+                <i className="fas fa-check-circle fa-2x fright" style={{color:"green"}}></i>
                 <h3 className='price'>ETH {price}</h3>
                 <h2>University: {metadata["university"]}</h2>
                 <h3>Course Name: {metadata["course-name"]}</h3>

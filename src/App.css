@@ -155,3 +155,11 @@ code {
   width: 800px;
   border-style: solid;
 }
+
+.price-checks {
+  display: inline;
+}
+
+.fright {
+  float: right;
+}
