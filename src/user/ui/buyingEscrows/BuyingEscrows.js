@@ -25,7 +25,7 @@ class BuyingEscrows extends Component {
     <div>
       <button 
         className='pure-button pure-button-primary'
-        disabled={true}
+        disabled
 							>{buttonText}</button>
     </div>
   </div>	

@@ -41,8 +41,8 @@ const showFulfillmentError = message => ({
 });
 
 const getUnique = (array) => {
-  return Array.from(new Set(array))
-}
+  return Array.from(new Set(array));
+};
 
 export const getOpenSaleOrders = () => async dispatch => {
   const [ownerAddress] = await store.getState().auth.web3.eth.getAccounts();
