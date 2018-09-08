@@ -40,14 +40,18 @@ const showFulfillmentError = message => ({
   message,
 });
 
+const getUnique = (array) => {
+  return Array.from(new Set(array));
+};
+
 export const getOpenSaleOrders = () => async dispatch => {
   const [ownerAddress] = await store.getState().auth.web3.eth.getAccounts();
   const escrowsContract = await getContract(AplusEscrows);
-  const escrowedDataHashes = await escrowsContract.getEscrowDataHashesBySeller(
-    ownerAddress
-  );
+  const escrowedDataHashes = getUnique(await escrowsContract.getEscrowDataHashesBySeller(ownerAddress));
   const buyersForDataHashes = await Promise.all(
-    escrowedDataHashes.map(dh => escrowsContract.getBuyersForDataHash(dh))
+    escrowedDataHashes.map(async (dh) =>
+      getUnique(await escrowsContract.getBuyersForDataHash(dh))
+    )
   );
   const escrowArrays = await Promise.all(
     escrowedDataHashes.map((dh, i) => {
