@@ -13,10 +13,10 @@ class BuyingEscrows extends Component {
   <div>
     {buyOrders.map((buyOrder, i) => {
 				var buttonText = "Revoke";
-				var dataHash = buyOrder[4];
-				if(buyOrder[3]){
+				var dataHash = buyOrder[5];
+				if(buyOrder[4]){
 					buttonText = "Closed";
-					dataHash = buyOrder[6];
+					dataHash = buyOrder[7];
 				}
 				return(
   <div key={i}>
@@ -25,8 +25,8 @@ class BuyingEscrows extends Component {
     <div>
       <button 
         className='pure-button pure-button-primary'
-        disabled={buyOrder[3]}
-        onClick={() => revokeOrder(buyOrder[4])}
+        disabled={buyOrder[4]}
+        onClick={() => revokeOrder(buyOrder[5])}
 							>{buttonText}</button>
     </div>
   </div>	
