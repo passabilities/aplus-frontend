@@ -7,7 +7,7 @@ class ApproveSaleOrders extends Component {
       <main className='container'>
         <div className='pure-g'>
           <div className='pure-u-1-1'>
-            <h1>Open Sale Orders</h1>
+            <h1>Approve Note Sales</h1>
             <ApproveSaleOrdersContainer />
           </div>
         </div>
