@@ -7,7 +7,7 @@ class GetRecord extends Component {
       <main className='container'>
         <div className='pure-g'>
           <div className='pure-u-1-1'>
-            <h1>Get Record</h1>
+            <h1>Get Notes</h1>
             <GetRecordFormContainer />
           </div>
         </div>

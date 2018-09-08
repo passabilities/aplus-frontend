@@ -41,7 +41,7 @@ class Header extends Component {
           onClick={this.navigateTo('/')}
           className='pure-menu-heading pure-menu-link logo-container'
         >
-          aplus<span className='plus-sign-logo'>+</span>
+          a<span className='plus-sign-logo'>+</span>plus
         </span>
       </nav>
     );

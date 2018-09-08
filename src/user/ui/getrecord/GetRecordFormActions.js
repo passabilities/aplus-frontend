@@ -24,8 +24,6 @@ export function getDecryptedRecord (record, privateKey) {
     const { linnia } = store.getState().auth;
     const [ownerAddress] = await store.getState().auth.web3.eth.getAccounts();
     const { dataUri } = await linnia.getPermission(record.dataHash, ownerAddress);
-    console.log(dataUri)
-
 
     const { ipfs } = store.getState().auth;
     ipfs.cat(dataUri, async (err, ipfsRes) => {

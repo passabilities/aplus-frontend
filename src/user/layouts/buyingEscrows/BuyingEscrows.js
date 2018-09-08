@@ -7,7 +7,7 @@ class BuyingEscrows extends Component {
       <main className='container'>
         <div className='pure-g'>
           <div className='pure-u-1-1'>
-            <h1>Open Buying Orders</h1>
+            <h1>Purchase History</h1>
             <BuyingEscrowsContainer />
           </div>
         </div>
