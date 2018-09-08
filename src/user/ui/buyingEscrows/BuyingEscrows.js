@@ -8,15 +8,16 @@ class BuyingEscrows extends Component {
 	}
 
 	render() {
-		const { buyOrders, revokeOrder } = this.props;
+		const { buyOrders } = this.props;
+		console.log(buyOrders)
 		return (
   <div>
     {buyOrders.map((buyOrder, i) => {
-				var buttonText = "Revoke";
+				var buttonText = "Processing";
 				var dataHash = buyOrder[5];
 				if(buyOrder[4]){
 					buttonText = "Closed";
-					dataHash = buyOrder[7];
+					dataHash = buyOrder[5];
 				}
 				return(
   <div key={i}>
@@ -25,8 +26,7 @@ class BuyingEscrows extends Component {
     <div>
       <button 
         className='pure-button pure-button-primary'
-        disabled={buyOrder[4]}
-        onClick={() => revokeOrder(buyOrder[5])}
+        disabled={true}
 							>{buttonText}</button>
     </div>
   </div>	

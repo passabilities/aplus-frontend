@@ -24,16 +24,6 @@ const assignListings = (listings) => ({
 	payload: listings,
 });
 
-const putListing = (listing) => ({
-	type: PUT_LISTING,
-	payload: listing,
-});
-
-const setStep = (step) => ({
-	type: SET_STEP,
-	step,
-});
-
 const setEcrow = (escrow) => ({
 	type: ESCROW_SET,
 	escrow,
@@ -55,8 +45,6 @@ export function buy (dataHash, price) {
     //await escrowsContract.escrows.call(dataHash, ownerAddress);
   };
 }
-
-
 
 export function search (property) {
   // Get Record from Linnia

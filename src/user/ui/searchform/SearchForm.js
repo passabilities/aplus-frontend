@@ -89,7 +89,6 @@ class SearchForm extends Component {
     
     if (escrow) {
       var res = JSON.parse(this.props.search.results);
-      console.log("ESCROW");
       return (
         <div>
           <h2 className='price'>Congratulations, you offer is beign processed!</h2>
