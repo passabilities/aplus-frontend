@@ -1,8 +1,9 @@
-import { GET_LISTINGS, PUT_LISTING, SET_STEP } from './ui/getlistings/GetListingsActions';
+import { GET_LISTINGS, PUT_LISTING, SET_STEP, ESCROW_SET } from './ui/searchform/SearchFormActions';
 
 const initialState = {
 	listings: [],
 	step: '',
+	escrow: false,
 };
 
 const listingsReducer = (state = initialState, action) => {
@@ -22,7 +23,11 @@ const listingsReducer = (state = initialState, action) => {
 	} else if (action.type === SET_STEP) {
 		const step = action.step;
 		return Object.assign({}, state, { step });
+	} else if (action.type === ESCROW_SET) {
+		const escrow = true;
+		return Object.assign({}, state, { escrow });
 	}
+
 
 	return state;
 };

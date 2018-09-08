@@ -36,7 +36,7 @@ export function getDecryptedRecord (record, privateKey) {
         // Try to decrypt with the provided key
         try {
           const decrypted = await decrypt(privateKey, encrypted);
-          record.decrypted = JSON.stringify(decrypted.toString());
+          record.decrypted = JSON.stringify(decrypted).toString();
           dispatch(assignRecord(record));
         } catch (e) {
           console.log(e);

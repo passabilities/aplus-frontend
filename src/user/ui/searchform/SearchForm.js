@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-var showdown  = require('showdown')
+var showdown  = require('showdown');
 
 class SearchForm extends Component {
   constructor (props) {
@@ -35,7 +35,7 @@ class SearchForm extends Component {
   }
 
   render () {
-    const listings = this.props.listings
+    const { listings, escrow } = this.props;
 
     const searchForm = () =>
       <form className='pure-form pure-form-stacked' onSubmit={this.handleSubmit}>
@@ -50,21 +50,21 @@ class SearchForm extends Component {
       </form>;
 
     const buyButton = (dataHash, price) =>
-      <button className='pure-button pure-button-primary' onClick={this.buy(dataHash, price)} >Buy</button>
+      <button className='pure-button pure-button-primary' onClick={this.buy(dataHash, price)} >Buy</button>;
     
     const searchResults = (records) =>
       records.map(record => {
         try{
-          const metadata = JSON.parse(record.metadata.replace(", }", "}"))
+          const metadata = JSON.parse(record.metadata.replace(", }", "}"));
 
-          var converter = new showdown.Converter()
-          var htmlMetadata  = converter.makeHtml(metadata["preview"])   
+          var converter = new showdown.Converter();
+          var htmlMetadata  = converter.makeHtml(metadata["preview"]);   
 
-          let price = 0
+          let price = 0;
 
           listings.forEach( (listing) => {
             if(listing.dataHash == record.dataHash){
-              price = (listing.price/1000000000000000000)
+              price = (listing.price/1000000000000000000);
             }
           });
 
@@ -75,8 +75,9 @@ class SearchForm extends Component {
                 <h2>University: {metadata["university"]}</h2>
                 <h3>Course Name: {metadata["course-name"]}</h3>
                 {buyButton(record.dataHash, price)}
-                <div dangerouslySetInnerHTML={{ __html: htmlMetadata }} ></div>
+                <div dangerouslySetInnerHTML={{ __html: htmlMetadata }}  />
                 <p>Owner: {record.owner}</p>
+                <p>Datahash: {record.dataHash}</p>
                 <br />
               </div>);
           }
@@ -85,33 +86,45 @@ class SearchForm extends Component {
         }
 
       });
-
-    if (this.props.search.results) {
+    
+    if (escrow) {
       var res = JSON.parse(this.props.search.results);
-      if (res.constructor !== Array) {
-        res = [res];
-      }
-      if (res.message) {
-        return (
-          <div>
-            <p className='error-message'>{res.message}</p>
-            {searchForm()}
-          </div>
-        );
+      console.log("ESCROW");
+      return (
+        <div>
+          <h2 className='price'>Congratulations, you offer is beign processed!</h2>
+          {searchForm()}
+          {searchResults(res)}
+        </div>
+      );
+    } else{
+      if (this.props.search.results) {
+        var res = JSON.parse(this.props.search.results);
+        if (res.constructor !== Array) {
+          res = [res];
+        }
+        if (res.message) {
+          return (
+            <div>
+              <p className='error-message'>{res.message}</p>
+              {searchForm()}
+            </div>
+          );
+        } else {
+          return (
+            <div>
+              {searchForm()}
+              {searchResults(res)}
+            </div>
+          );
+        }
       } else {
         return (
           <div>
             {searchForm()}
-            {searchResults(res)}
           </div>
         );
       }
-    } else {
-      return (
-        <div>
-          {searchForm()}
-        </div>
-      );
     }
   }
 }

@@ -10,6 +10,7 @@ export const MAKE_SEARCH = 'MAKE_SEARCH';
 export const GET_LISTINGS = 'GET_LISTINGS';
 export const PUT_LISTING = 'PUT_LISTING';
 export const SET_STEP = 'SET_STEP';
+export const ESCROW_SET = 'ESCROW_SET';
 
 function assignSearch (search) {
   return {
@@ -33,6 +34,10 @@ const setStep = (step) => ({
 	step,
 });
 
+const setEcrow = (escrow) => ({
+	type: ESCROW_SET,
+	escrow,
+});
 
 export function buy (dataHash, price) {
   return async function (dispatch) {
@@ -41,15 +46,13 @@ export function buy (dataHash, price) {
 
     var publicKey = prompt('Enter you Public Key');
   
-    dispatch(setStep('Creating a buy order . . . '));
-  
+    dispatch(setEcrow(true));
     await escrowsContract.createEscrow(dataHash, publicKey, {
       value: price*1000000000000000000,
       from: ownerAddress,
     });
   
-    const escrow = await escrowsContract.escrows.call(dataHash, ownerAddress);
-    //dispatch(putListing(listing));
+    //await escrowsContract.escrows.call(dataHash, ownerAddress);
   };
 }
 

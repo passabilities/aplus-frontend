@@ -3,7 +3,7 @@ import SearchForm from './SearchForm';
 import { search, buy } from './SearchFormActions';
 
 const mapStateToProps = (state, ownProps) => {
-  return { search: state.search, listings: state.listings.listings };
+  return { search: state.search, listings: state.listings.listings, escrow: state.listings.escrow };
 };
 
 const mapDispatchToProps = (dispatch) => {
