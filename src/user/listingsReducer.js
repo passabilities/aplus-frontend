@@ -2,7 +2,7 @@ import { GET_LISTINGS, PUT_LISTING, SET_STEP } from './ui/getlistings/GetListing
 
 const initialState = {
 	listings: [],
-	step: ''
+	step: '',
 };
 
 const listingsReducer = (state = initialState, action) => {
@@ -13,7 +13,7 @@ const listingsReducer = (state = initialState, action) => {
 		const listings = state.listings.slice();
 		const listingIndex = listings.findIndex((element) => {
 			return element.dataHash === action.payload.dataHash;
-		})
+		});
 
 		const step = '';
 

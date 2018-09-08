@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import SellDataContainer from '../../ui/selldata/SellDataContainer'
+import React, { Component } from 'react';
+import SellDataContainer from '../../ui/selldata/SellDataContainer';
 
 class SellData extends Component {
   render () {
@@ -12,8 +12,8 @@ class SellData extends Component {
           </div>
         </div>
       </main>
-    )
+    );
   }
 }
 
-export default SellData
+export default SellData;

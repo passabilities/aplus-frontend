@@ -18,7 +18,7 @@ const reducer = combineReducers({
   selldata: selldataReducer,
   listings: listingsReducer,
   saleOrders: saleOrdersReducer,
-  buyOrders: buyOrdersReducer
-})
+  buyOrders: buyOrdersReducer,
+});
 
 export default reducer;

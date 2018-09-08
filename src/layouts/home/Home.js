@@ -15,7 +15,7 @@ const Copy = () => {
         src={require("./linnia.png")}
         style={{
           width: 600,
-          height: 600
+          height: 600,
         }}
       />
     </div>
@@ -27,9 +27,9 @@ class Home extends Component {
     const { authError } = this.props;
 
     return (
-      <main className="container">
-        <div className="pure-g">
-          <div className="pure-u-1-1">
+      <main className='container'>
+        <div className='pure-g'>
+          <div className='pure-u-1-1'>
             {authError ? <AuthError authError={authError} /> : <Copy />}
           </div>
         </div>
@@ -39,7 +39,7 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-  authError: PropTypes.string
+  authError: PropTypes.string,
 };
 
 export default Home;

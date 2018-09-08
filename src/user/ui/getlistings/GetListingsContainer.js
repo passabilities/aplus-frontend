@@ -1,6 +1,6 @@
-import GetListings from './GetListings'
-import {connect} from 'react-redux'
-import { getListings, buyListing } from './GetListingsActions'
+import GetListings from './GetListings';
+import {connect} from 'react-redux';
+import { getListings, buyListing } from './GetListingsActions';
 
 const mapStateToProps = (state, ownProps) => {
 	const listings = state.listings.listings;
@@ -8,24 +8,24 @@ const mapStateToProps = (state, ownProps) => {
 
 	return {
 		listings,
-    step
+    step,
 	};
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
   	getListings() {
-  		dispatch(getListings())
+  		dispatch(getListings());
   	},
   	buyListing(listing, publicKey) {
-  		dispatch(buyListing(listing, publicKey))
-  	}
+  		dispatch(buyListing(listing, publicKey));
+  	},
   };
-}
+};
 
 const GetListingsContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(GetListings)
+)(GetListings);
 
 export default GetListingsContainer;

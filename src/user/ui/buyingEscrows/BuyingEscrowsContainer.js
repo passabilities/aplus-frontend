@@ -1,28 +1,28 @@
-import BuyingEscrows from './BuyingEscrows'
-import {connect} from 'react-redux'
-import { getOpenBuyingOrders, revokeOrder } from './BuyingEscrowsActions'
+import BuyingEscrows from './BuyingEscrows';
+import {connect} from 'react-redux';
+import { getOpenBuyingOrders, revokeOrder } from './BuyingEscrowsActions';
 
 const mapStateToProps = (state, ownProps) => {
 	const buyOrders = state.buyOrders;
 	return {
-		buyOrders
+		buyOrders,
 	};
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
 		getOpenBuyingOrders() {
-  		dispatch(getOpenBuyingOrders())
+  		dispatch(getOpenBuyingOrders());
 		},
 		revokeOrder(dataHash) {
-  		dispatch(revokeOrder(dataHash))
+  		dispatch(revokeOrder(dataHash));
   	},
   };
-}
+};
 
 const BuyingEscrowsContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(BuyingEscrows)
+)(BuyingEscrows);
 
 export default BuyingEscrowsContainer;

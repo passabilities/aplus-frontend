@@ -10,6 +10,7 @@ import './App.css';
 
 // Layouts
 import Home from './layouts/home/Home';
+import Search from './user/layouts/search/Search';
 import Header from './layouts/header/Header';
 import SellData from './user/layouts/selldata/SellData';
 import GetListings from './user/layouts/getlistings/GetListings';
@@ -65,6 +66,12 @@ class App extends Component {
               path='/get-data'
               authError={authError}
               component={GetRecord}
+            />
+            <ProtectedRoute
+              isAuthenticated={isAuthenticated}
+              path='/'
+              authError={authError}
+              component={Search}
             />
             />
             <Route

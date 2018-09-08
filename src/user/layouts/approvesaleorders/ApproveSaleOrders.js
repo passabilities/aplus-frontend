@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import ApproveSaleOrdersContainer from '../../ui/approvesaleorders/ApproveSaleOrdersContainer'
+import React, { Component } from 'react';
+import ApproveSaleOrdersContainer from '../../ui/approvesaleorders/ApproveSaleOrdersContainer';
 
 class ApproveSaleOrders extends Component {
   render () {
@@ -12,7 +12,7 @@ class ApproveSaleOrders extends Component {
           </div>
         </div>
       </main>
-    )
+    );
   }
 }
 

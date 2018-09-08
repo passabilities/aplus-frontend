@@ -4,7 +4,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 
 class ApproveSaleOrders extends Component {
 	state = {
-		privateKey: ''
+		privateKey: '',
 	};
 
 	componentDidMount() {
@@ -21,44 +21,44 @@ class ApproveSaleOrders extends Component {
 		const { privateKey } = this.state;
 
 		return (
-			<div style={{width: '60%'}}>
-				{step && <div>
-					{step}
-					<LinearProgress />
-					<br />
-					<br />
-				</div>}
-				{error && <p style={{color: 'red'}}>{error}</p>}
-				{!!saleOrders.filter(saleOrder => !saleOrder.fulfilled).length && <div>
-					<p>** Disclaimer: We need your private key to decrypt the data to share. **</p>
-					<label style={{ fontSize: 20}}>
+  <div style={{width: '60%'}}>
+    {step && <div>
+      {step}
+      <LinearProgress />
+      <br />
+      <br />
+    </div>}
+    {error && <p style={{color: 'red'}}>{error}</p>}
+    {!!saleOrders.filter(saleOrder => !saleOrder.fulfilled).length && <div>
+      <p>** Disclaimer: We need your private key to decrypt the data to share. **</p>
+      <label style={{ fontSize: 20}}>
 						Private Key
-						<span>         </span>
-						<input 
-							type="password" 
-							value={privateKey} 
-							onChange={this.onChange}
+        <span />
+        <input 
+          type='password' 
+          value={privateKey} 
+          onChange={this.onChange}
 						/>
-					</label>
-				</div>}
-				{saleOrders.filter(saleOrder => !saleOrder.fulfilled).map((saleOrder, i) => (
-					<div key={i}>
-						<p>Buyer: {saleOrder.buyer}</p>
-						<p>DataHash: {saleOrder.dataHash}</p>
-						<button
-							onClick={() => fulfillSaleOrder(
+      </label>
+    </div>}
+    {saleOrders.filter(saleOrder => !saleOrder.fulfilled).map((saleOrder, i) => (
+      <div key={i}>
+        <p>Buyer: {saleOrder.buyer}</p>
+        <p>DataHash: {saleOrder.dataHash}</p>
+        <button
+          onClick={() => fulfillSaleOrder(
 								saleOrder.dataHash, 
 								saleOrder.buyer, 
 								saleOrder.buyerPublicKey, 
 								privateKey,
 								saleOrder
 							)}
-							className='pure-button pure-button-primary'
+          className='pure-button pure-button-primary'
 						>Approve</button>
-					</div>
+      </div>
 				))}
-				{!saleOrders.filter(saleOrder => !saleOrder.fulfilled).length && <h2>No sale orders. Get out there and sell yourself!</h2>}
-			</div>
+    {!saleOrders.filter(saleOrder => !saleOrder.fulfilled).length && <h2>No sale orders. Get out there and sell yourself!</h2>}
+  </div>
 		);
 	}
 }

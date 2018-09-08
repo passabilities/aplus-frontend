@@ -10,14 +10,14 @@ const mapStateToProps = (state, ownProps) => {
 	return {
 		saleOrders,
     error,
-    step
+    step,
 	};
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
   	getOpenSaleOrders() {
-  		dispatch(getOpenSaleOrders())
+  		dispatch(getOpenSaleOrders());
   	},
     fulfillSaleOrder(dataHash, viewer, viewerPublicKey, ownerPrivateKey, saleOrder) {
       dispatch(fulfillSaleOrder(
@@ -26,14 +26,14 @@ const mapDispatchToProps = (dispatch) => {
         viewerPublicKey, 
         ownerPrivateKey,
         saleOrder
-      ))
-    }
+      ));
+    },
   };
-}
+};
 
 const ApproveSaleOrdersContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ApproveSaleOrders)
+)(ApproveSaleOrders);
 
 export default ApproveSaleOrdersContainer;

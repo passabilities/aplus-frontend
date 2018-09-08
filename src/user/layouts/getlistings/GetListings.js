@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import GetListingsContainer from '../../ui/getlistings/GetListingsContainer'
+import React, { Component } from 'react';
+import GetListingsContainer from '../../ui/getlistings/GetListingsContainer';
 
 class GetListings extends Component {
   render () {
@@ -12,8 +12,8 @@ class GetListings extends Component {
           </div>
         </div>
       </main>
-    )
+    );
   }
 }
 
-export default GetListings
+export default GetListings;

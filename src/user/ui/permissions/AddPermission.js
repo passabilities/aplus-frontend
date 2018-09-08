@@ -1,47 +1,47 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class AddPermission extends Component {
   constructor (props) {
-    super(props)
+    super(props);
 
     this.state = {
       dataHash: '',
       viewerAddress: '',
       viewerPublicSharingKey: '',
       ownerPrivateKey: '',
-    }
+    };
 
     // Set variables pass as url arguments
     window.location.search.substr(1).split('&').forEach((param) => {
-      const key = param.split('=')[0]
-      const val = param.split('=')[1]
+      const key = param.split('=')[0];
+      const val = param.split('=')[1];
       if (this.state[key] !== undefined) {
-        this.state[key] = val
+        this.state[key] = val;
       }
-    })
+    });
   }
 
   onInputChange = (property) => (event) => {
-    this.props.clearPermissionsError()
-    const value = event.target.value
-    this.setState({ [property]: value })
+    this.props.clearPermissionsError();
+    const value = event.target.value;
+    this.setState({ [property]: value });
   }
 
   camelToPretty = (string) => {
     return string.replace(/([A-Z])/g, (match) => ` ${match}`)
-      .replace(/^./, (match) => match.toUpperCase())
+      .replace(/^./, (match) => match.toUpperCase());
   }
 
   handleSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     this.props.addPermission(
       this.state.dataHash,
       this.state.viewerAddress,
       this.state.viewerPublicSharingKey,
       this.state.ownerPrivateKey
-    )
+    );
   }
 
   render () {
@@ -57,19 +57,19 @@ class AddPermission extends Component {
                 type={(property === 'ownerPrivateKey') ? 'password' : 'text'}
                 onChange={this.onInputChange(property)}
               />
-            </label>)
+            </label>);
           })}
           <br />
           <button className='pure-button pure-button-primary' type='submit'>Add Permission</button>
         </form>
       </div>
-    )
+    );
   }
 }
 
 AddPermission.propTypes = {
   addPermission: PropTypes.func.isRequired,
   clearPermissionsError: PropTypes.func.isRequired,
-}
+};
 
-export default AddPermission
+export default AddPermission;

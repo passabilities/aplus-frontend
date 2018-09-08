@@ -1,6 +1,6 @@
-import SellData from './SellData'
-import {connect} from 'react-redux'
-import {getSellData, createListing } from './SellDataActions'
+import SellData from './SellData';
+import {connect} from 'react-redux';
+import {getSellData, createListing } from './SellDataActions';
 
 const mapStateToProps = (state, ownProps) => {
 
@@ -9,24 +9,24 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     sellData,
-    step
-  }
-}
+    step,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getSellData: () => {
-        dispatch(getSellData())
+        dispatch(getSellData());
       },
     createListing(data, price) {
-        dispatch(createListing(data, price))
-    }
-  }
-}
+        dispatch(createListing(data, price));
+    },
+  };
+};
 
 const SellDataContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(SellData)
+)(SellData);
 
-export default SellDataContainer
+export default SellDataContainer;

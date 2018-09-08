@@ -16,7 +16,7 @@ const canAccess = true;
 
 const assignOpenSaleOrders = saleOrders => ({
   type: GET_OPEN_SALE_ORDERS,
-  payload: saleOrders
+  payload: saleOrders,
 });
 
 const getContract = async abi => {
@@ -28,17 +28,17 @@ const getContract = async abi => {
 
 const updateFulfillment = saleOrder => ({
   type: REMOVE_SALE_ORDER,
-  payload: saleOrder
+  payload: saleOrder,
 });
 
 const updateFulfillmentStep = step => ({
   type: SET_FULFILLMENT_STEP,
-  step
+  step,
 });
 
 const showFulfillmentError = message => ({
   type: ADD_FULFILLMENT_ERROR,
-  message
+  message,
 });
 
 export const getOpenSaleOrders = () => async dispatch => {
@@ -170,7 +170,7 @@ export const fulfillSaleOrder = (
     await permissions.grantAccess(dataHash, viewer, record.dataUri, {
       from: owner,
       gasPrice,
-      gas
+      gas,
     });
   } catch (e) {
     console.error(e);
@@ -188,7 +188,7 @@ export const fulfillSaleOrder = (
     await escrowsContract.claimMoney(dataHash, viewer, {
       from: owner,
       gasPrice,
-      gas
+      gas,
     });
   } catch (e) {
     console.error(e);

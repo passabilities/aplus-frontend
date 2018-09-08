@@ -2,6 +2,7 @@
   "name": "aplus",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://vrotmanh.github.io/aplus-frontend/",
   "devDependencies": {
     "autoprefixer": "6.5.1",
     "babel-core": "6.17.0",
@@ -62,6 +63,7 @@
     "eth-crypto": "^1.2.3",
     "eth-ecies": "^1.0.3",
     "ethereumjs-util": "^5.2.0",
+    "gh-pages": "^1.2.0",
     "history": "^4.7.2",
     "ipfs-api": "^22.2.3",
     "ipfs-mini": "^1.1.2",
@@ -84,7 +86,10 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "jest src/App.test.js",
-    "ganache": "ganache-cli -p 7545 -i 5777 -a 61 -m 'drastic outer student holiday hour ordinary reduce absurd clever govern ensure merry keen sound pelican'"
+    "ganache": "ganache-cli -p 7545 -i 5777 -a 61 -m 'drastic outer student holiday hour ordinary reduce absurd clever govern ensure merry keen sound pelican'",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "eject": "react-scripts eject"
   },
   "jest": {
     "setupFiles": [

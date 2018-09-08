@@ -2,12 +2,12 @@ import {
 	GET_OPEN_SALE_ORDERS, 
 	ADD_FULFILLMENT_ERROR,
 	REMOVE_SALE_ORDER,
-	SET_FULFILLMENT_STEP
+	SET_FULFILLMENT_STEP,
 } from './ui/approvesaleorders/ApproveSaleOrdersActions';
 
 const initialState = {
 	saleOrders: [],
-	error: ''
+	error: '',
 };
 
 const saleOrdersReducer = (state = initialState, action) => {

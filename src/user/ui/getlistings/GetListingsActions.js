@@ -11,21 +11,21 @@ export const SET_STEP = 'SET_STEP';
 
 const assignListings = (listings) => ({
 	type: GET_LISTINGS,
-	payload: listings
+	payload: listings,
 });
 
 const putListing = (listing) => ({
 	type: PUT_LISTING,
-	payload: listing
+	payload: listing,
 });
 
 const setStep = (step) => ({
 	type: SET_STEP,
-	step
+	step,
 });
 
 export const getListings = () => async (dispatch) => {
-	const [ownerAddress] = await store.getState().auth.web3.eth.getAccounts()
+	const [ownerAddress] = await store.getState().auth.web3.eth.getAccounts();
 	const listingsContract = await getContract(AplusListings);
 	const escrowsContract = await getContract(AplusEscrows);
 
@@ -49,14 +49,14 @@ export const getListings = () => async (dispatch) => {
 };
 
 export const buyListing = (listing, publicKey) => async (dispatch) => {
-	const [ownerAddress] = await store.getState().auth.web3.eth.getAccounts()
+	const [ownerAddress] = await store.getState().auth.web3.eth.getAccounts();
 	const escrowsContract = await getContract(AplusEscrows);
 
 	dispatch(setStep('Creating a buy order . . . '));
 
 	await escrowsContract.createEscrow(listing.dataHash, publicKey, { 
 		value: listing.price,
-		from: ownerAddress
+		from: ownerAddress,
 	});
 
 	const escrow = await escrowsContract.escrows.call(listing.dataHash, ownerAddress);

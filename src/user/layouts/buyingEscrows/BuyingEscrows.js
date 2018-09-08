@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import BuyingEscrowsContainer from '../../ui/buyingEscrows/BuyingEscrowsContainer'
+import React, { Component } from 'react';
+import BuyingEscrowsContainer from '../../ui/buyingEscrows/BuyingEscrowsContainer';
 
 class BuyingEscrows extends Component {
   render () {
@@ -12,8 +12,8 @@ class BuyingEscrows extends Component {
           </div>
         </div>
       </main>
-    )
+    );
   }
 }
 
-export default BuyingEscrows
+export default BuyingEscrows;

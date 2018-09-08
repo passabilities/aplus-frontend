@@ -9,7 +9,7 @@ const buyOrdersReducer = (state = initialState, action) => {
 		const array = state.slice();
 		const orderIndex = array.findIndex((element) => {
 			return element[4] === action.payload;
-		})
+		});
 		array.splice(orderIndex, 1);
 		return Object.assign([], state, array);
 	}
