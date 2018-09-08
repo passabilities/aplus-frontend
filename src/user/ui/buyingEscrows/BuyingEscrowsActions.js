@@ -15,12 +15,15 @@ const revokeBuyingOrder = (buyOrder) => ({
 	payload: buyOrder,
 });
 
+const getUnique = (array) => {
+  return Array.from(new Set(array))
+}
 
 export const getOpenBuyingOrders = () => async (dispatch) => {
 	const [ownerAddress] = await store.getState().auth.web3.eth.getAccounts();
 	const { linnia } = store.getState().auth;
 	const escrowsContract = await getContract(AplusEscrows);
-	const escrowedDataHashes = await escrowsContract.getEscrowDataHashesByBuyer(ownerAddress);
+	const escrowedDataHashes = getUnique(await escrowsContract.getEscrowDataHashesByBuyer(ownerAddress));
 	const escrowArrays = await Promise.all(escrowedDataHashes.map(dh => escrowsContract.escrows.call(dh, ownerAddress)));
 	const permissions = await Promise.all(escrowArrays.map(escrow => linnia.getPermission(escrow[4], ownerAddress)));
 	const results = escrowArrays.map( (escrow, i) => {
