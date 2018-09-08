@@ -43,6 +43,7 @@ class Header extends Component {
         >
           Aplus
         </span>
+        <img src='' class='logo'/>
       </nav>
     );
   }

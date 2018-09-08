@@ -2,12 +2,12 @@
 
 body,
 .pure-g [class*=pure-u] {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Helvetica Neue', sans-serif;
+  color: black;
 }
 
 h1, h2, h3, h4, h5, h6, p, input, textarea, span, button {
   font-family: 'Roboto', sans-serif;
-  color: black;
 }
 
 
@@ -34,7 +34,7 @@ code {
   margin-left: -20px;
   margin-top: -20px;
   top: 50%;
-  left: 50%; 
+  left: 50%;
 }
 
 .progress-background {
@@ -67,11 +67,11 @@ code {
 }
 
 .pure-button-primary {
-  background-color: #0c1a2b;
+  background-color: black;
 }
 
 .pure-button-primary:hover {
-  background-color: #233e5e;
+  background-color: #29AF1D;
 }
 
 .pure-form input[type="text"]:focus {
@@ -92,9 +92,13 @@ code {
 .navbar {
   position: fixed;
   padding: 10px 24px;
-  background: #572C6E;
+  background: #29AF1D;
   font-size: 20px;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+.navbar #logo {
+
 }
 
 .pure-menu-item {
@@ -102,12 +106,13 @@ code {
 }
 
 .navbar span {
-  color: #fff;
+  color: black;
   cursor: pointer;
 }
 
 .pure-menu-link:hover {
-  background: #233e5e;
+  background: #29AF1D;
+  color: white;
 }
 
 .navbar .pure-menu-heading {
