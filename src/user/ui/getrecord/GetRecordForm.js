@@ -63,7 +63,7 @@ class GetRecordForm extends Component {
     // Got Results
     if (this.props.record.data) {
       // To decrypt
-      if (!this.props.record.data.decrypted) {
+      if (this.props.record.data.decrypted) {
         return (
           <div>
             {comp1()}
@@ -88,6 +88,17 @@ class GetRecordForm extends Component {
               <h2>Decryted Data</h2>
               <p>{this.props.record.data.decrypted}</p>
             </div>
+
+            {/* decrypted data */}
+
+            <form className='pure-form pure-form-stacked' onSubmit={this.handleDecrypt}>
+              <fieldset>
+                <p className="claim-text">Enjoy your a+plus notes!</p>
+                <p className="claim-text">Please accept these APLUS tokens. You can use them to challenge a+plus Experts if you disagree with their credibility.</p>
+                <br />
+                <button type='submit' className='pure-button pure-button-primary'>Claim your APLUS tokens!</button>
+              </fieldset>
+            </form>
           </div>
         );
       }
