@@ -1,15 +1,18 @@
 import { connect } from 'react-redux';
 import SearchForm from './SearchForm';
-import { search } from './SearchFormActions';
+import { search, buy } from './SearchFormActions';
 
 const mapStateToProps = (state, ownProps) => {
-  return { search: state.search };
+  return { search: state.search, listings: state.listings.listings };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onSearchSubmit: (property) => {
       dispatch(search(property));
+    },
+    onBuy: (dataHash, price) => {
+      dispatch(buy(dataHash, price));
     },
   };
 };

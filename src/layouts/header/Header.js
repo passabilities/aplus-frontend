@@ -14,25 +14,9 @@ class Header extends Component {
             <li className='pure-menu-item'>
               <span
                 className='pure-menu-link'
-                onClick={this.navigateTo('/list-data')}
-              >
-                List Data
-              </span>
-            </li>
-            <li className='pure-menu-item'>
-              <span
-                className='pure-menu-link'
                 onClick={this.navigateTo('/approve-sale-orders')}
               >
                 Approve Sale Orders
-              </span>
-            </li>
-            <li className='pure-menu-item'>
-              <span
-                className='pure-menu-link'
-                onClick={this.navigateTo('/for-sale')}
-              >
-                Buy Data
               </span>
             </li>
             <li className='pure-menu-item'>

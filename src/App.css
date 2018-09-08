@@ -124,7 +124,8 @@ code {
   margin-right: 10px;
 }
 
-#price {
+.price {
   width: 200px;
   margin-bottom: 10px;
+  color: green;
 }

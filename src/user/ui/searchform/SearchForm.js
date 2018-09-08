@@ -23,6 +23,10 @@ class SearchForm extends Component {
     this.setState({ [property]: value });
   }
 
+  buy = (dataHash, price) => (event) => {
+    this.props.onBuy(dataHash, price);
+  }
+
   handleSubmit = (event) => {
     event.preventDefault();
     const property = event.target.elements.property.value;
@@ -30,6 +34,8 @@ class SearchForm extends Component {
   }
 
   render () {
+    const listings = this.props.listings
+
     const searchForm = () =>
       <form className='pure-form pure-form-stacked' onSubmit={this.handleSubmit}>
         <fieldset>
@@ -42,23 +48,34 @@ class SearchForm extends Component {
         </fieldset>
       </form>;
 
+    const buyButton = (dataHash, price) =>
+      <button className='pure-button pure-button-primary' onClick={this.buy(dataHash, price)} >Buy</button>
+    
     const searchResults = (records) =>
       records.map(record => {
-        console.log(record.metadata);
         try{
-          const metadata = JSON.parse(record.metadata.replace(", }", "}"));
-          console.log(typeof metadata);
-          return (
-            <div key={record.dataHash}>
-              <h2>University: {metadata["university"]}</h2>
-              <h3>Course Name: {metadata["course-name"]}</h3>
-              <p>Preview: {metadata["preview"]}</p>
-              <p>Owner: {record.owner}</p>
+          const metadata = JSON.parse(record.metadata.replace(", }", "}"))
+          let price = 0
 
-              <br />
-            </div>);
+          listings.forEach( (listing) => {
+            if(listing.dataHash == record.dataHash){
+              price = (listing.price/1000000000000000000)
+            }
+          });
+
+          if(price != 0){
+            return (
+              <div key={record.dataHash}>
+                <h2>University: {metadata["university"]}</h2>
+                <h3>Course Name: {metadata["course-name"]}</h3>
+                <p className='price'>Price: {price} eth</p>
+                {buyButton(record.dataHash, price)}
+                <p>Preview: {metadata["preview"]}</p>
+                <p>Owner: {record.owner}</p>
+                <br />
+              </div>);
+          }
         } catch(e) {
-          console.log(e);
           return(<p />);
         }
 

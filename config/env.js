@@ -24,12 +24,12 @@ function getClientEnvironment(publicUrl) {
       'PUBLIC_URL': JSON.stringify(publicUrl),
 
       // Other Env variables
-      'LINNIA_ETH_PROVIDER': JSON.stringify(process.env.LINNIA_ETH_PROVIDER),
-      'LINNIA_IPFS_HOST': JSON.stringify(process.env.LINNIA_IPFS_HOST),
-      'LINNIA_IPFS_PORT': JSON.stringify(process.env.LINNIA_IPFS_PORT),
-      'LINNIA_IPFS_PROTOCOL': JSON.stringify(process.env.LINNIA_IPFS_PROTOCOL),
-      'LINNIA_HUB_ADDRESS': JSON.stringify(process.env.LINNIA_HUB_ADDRESS),
-      'LINNIA_SEARCH_URI': JSON.stringify(process.env.LINNIA_SEARCH_URI)
+      'LINNIA_ETH_PROVIDER': JSON.stringify("https://ropsten.infura.io/l9GJbPZHjmcuNncqAniu"),
+      'LINNIA_IPFS_HOST': JSON.stringify("ipfs.infura.io"),
+      'LINNIA_IPFS_PORT': JSON.stringify("5001"),
+      'LINNIA_IPFS_PROTOCOL': JSON.stringify("https"),
+      'LINNIA_HUB_ADDRESS': JSON.stringify("0x177bf15e7e703f4980b7ef75a58dc4198f0f1172"),
+      'LINNIA_SEARCH_URI': JSON.stringify("https://linniaserver.com")
     });
   return {'process.env': processEnv};
 }
