@@ -13,7 +13,6 @@ import Home from './layouts/home/Home';
 import Search from './user/layouts/search/Search';
 import Header from './layouts/header/Header';
 import SellData from './user/layouts/selldata/SellData';
-import GetListings from './user/layouts/getlistings/GetListings';
 import ApproveSaleOrders from './user/layouts/approvesaleorders/ApproveSaleOrders';
 import BuyingEscrows from './user/layouts/buyingEscrows/BuyingEscrows';
 import GetRecord from './user/layouts/getrecord/GetRecord';
@@ -42,12 +41,6 @@ class App extends Component {
               path='/list-data'
               authError={authError}
               component={SellData}
-            />
-            <ProtectedRoute
-              isAuthenticated={isAuthenticated}
-              path='/for-sale'
-              authError={authError}
-              component={GetListings}
             />
             <ProtectedRoute
               isAuthenticated={isAuthenticated}

@@ -20,8 +20,6 @@ class ApproveSaleOrders extends Component {
 		const { saleOrders, fulfillSaleOrder, error, step } = this.props;
     const { privateKey } = this.state;
     
-    console.log(saleOrders)
-
 		return (
   <div style={{width: '60%'}}>
     {step && <div>
