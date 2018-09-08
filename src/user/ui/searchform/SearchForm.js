@@ -97,7 +97,7 @@ class SearchForm extends Component {
       var res = JSON.parse(this.props.search.results);
       return (
         <div>
-          <h2 className='price'>Congratulations, you offer is beign processed!</h2>
+          <h2 className='price-congrats'>Congratulations, your offer is being processed!</h2>
           {searchForm()}
           {searchResults(res)}
         </div>
