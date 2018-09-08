@@ -15,7 +15,7 @@ class BuyingEscrows extends Component {
     {buyOrders.map((buyOrder, i) => {
 				var buttonText = "Processing";
 				var dataHash = buyOrder[5];
-				if(buyOrder[4]){
+				if(buyOrder[3]){
 					buttonText = "Closed";
 					dataHash = buyOrder[5];
 				}
