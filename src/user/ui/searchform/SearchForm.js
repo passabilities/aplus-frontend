@@ -76,8 +76,14 @@ class SearchForm extends Component {
                 <h3>Course Name: {metadata["course-name"]}</h3>
                 {buyButton(record.dataHash, price)}
                 <div dangerouslySetInnerHTML={{ __html: htmlMetadata }}  />
-                <p>Owner: {record.owner}</p>
-                <p>Datahash: {record.dataHash}</p>
+                <p>Owner:
+                  <br />
+                  {record.owner}
+                </p>
+                <p>Datahash:
+                  <br />
+                  {record.dataHash}
+                </p>
                 <br />
               </div>);
           }
