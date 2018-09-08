@@ -32,7 +32,7 @@ class Header extends Component {
                 className='pure-menu-link'
                 onClick={this.navigateTo('/get-data')}
               >
-                Get Data
+                Get Bought Data
               </span>
             </li>
           </span>

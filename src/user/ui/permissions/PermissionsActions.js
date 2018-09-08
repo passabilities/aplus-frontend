@@ -1,7 +1,6 @@
 import store from '../../../store';
 import axios from 'axios';
 import ecies from 'eth-ecies';
-import {Buffer} from 'safe-buffer';
 
 export const SET_PERMISSIONS = 'SET_PERMISSIONS';
 export const REMOVE_PERMISSION = 'REMOVE_PERMISSION';
@@ -108,7 +107,7 @@ export const addPermission = (dataHash, viewer, viewerPublicKey, ownerPrivateKey
   }
 
   try {
-    reencrypted = ecies.encrypt(new Buffer(viewerPublicKey, 'hex'), decryptedData);
+    reencrypted = ecies.encrypt(viewerPublicKey, decryptedData);
   } catch (e) {
     dispatch(showPermissionError('Unable to encrypt file for viewer. Is the viewer public key correct?'));
     return;

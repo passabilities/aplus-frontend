@@ -21,13 +21,14 @@ export function getRecord (dataHash) {
 export function getDecryptedRecord (record, privateKey) {
   // Get Record from Linnia
   return async (dispatch) => {
+    const { linnia } = store.getState().auth;
+    const [ownerAddress] = await store.getState().auth.web3.eth.getAccounts();
+    const { dataUri } = await linnia.getPermission(record.dataHash, ownerAddress);
+    console.log(dataUri)
+
+
     const { ipfs } = store.getState().auth;
-
-    if (record.owner === '0x0000000000000000000000000000000000000000') {
-      return (alert('Error: owner address is zero. does the file exist?'));
-    }
-
-    ipfs.cat(record.dataUri, async (err, ipfsRes) => {
+    ipfs.cat(dataUri, async (err, ipfsRes) => {
       if(err){
         console.log(err);
       }else{

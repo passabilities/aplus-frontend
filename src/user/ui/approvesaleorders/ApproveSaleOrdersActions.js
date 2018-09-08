@@ -40,18 +40,14 @@ const showFulfillmentError = message => ({
   message,
 });
 
-const getUnique = (array) => {
-  return Array.from(new Set(array))
-}
-
 export const getOpenSaleOrders = () => async dispatch => {
   const [ownerAddress] = await store.getState().auth.web3.eth.getAccounts();
   const escrowsContract = await getContract(AplusEscrows);
-  const escrowedDataHashes = getUnique(await escrowsContract.getEscrowDataHashesBySeller(ownerAddress));
+  const escrowedDataHashes = await escrowsContract.getEscrowDataHashesBySeller(
+    ownerAddress
+  );
   const buyersForDataHashes = await Promise.all(
-    escrowedDataHashes.map(async (dh) =>
-      getUnique(await escrowsContract.getBuyersForDataHash(dh))
-    )
+    escrowedDataHashes.map(dh => escrowsContract.getBuyersForDataHash(dh))
   );
   const escrowArrays = await Promise.all(
     escrowedDataHashes.map((dh, i) => {
@@ -132,9 +128,6 @@ export const fulfillSaleOrder = (
   dispatch(updateFulfillmentStep("Re-encrypting file for buyer . . ."));
 
   try {
-    console.log(viewerPublicKey)
-    return
-
     reencrypted = await encrypt(
       viewerPublicKey,
       decryptedData
@@ -173,7 +166,7 @@ export const fulfillSaleOrder = (
 
   try {
     const { permissions } = await linnia.getContractInstances();
-    await permissions.grantAccess(dataHash, viewer, record.dataUri, {
+    await permissions.grantAccess(dataHash, viewer, viewerFile, {
       from: owner,
       gasPrice,
       gas,
