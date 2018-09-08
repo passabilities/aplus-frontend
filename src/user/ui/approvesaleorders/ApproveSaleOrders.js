@@ -19,45 +19,52 @@ class ApproveSaleOrders extends Component {
 	render() {
 		const { saleOrders, fulfillSaleOrder, error, step } = this.props;
     const { privateKey } = this.state;
-    
+
 		return (
-  <div style={{width: '60%'}}>
-    {step && <div>
-      {step}
-      <LinearProgress />
-      <br />
-      <br />
-    </div>}
-    {error && <p style={{color: 'red'}}>{error}</p>}
-    {!!saleOrders.filter(saleOrder => !saleOrder.fulfilled).length && <div>
-      <p>** Disclaimer: We need your private key to decrypt the data to share. **</p>
-      <label style={{ fontSize: 20}}>
-						Private Key
-        <span />
-        <input 
-          type='password' 
-          value={privateKey} 
-          onChange={this.onChange}
-						/>
-      </label>
-    </div>}
-    {saleOrders.filter(saleOrder => !saleOrder.fulfilled).map((saleOrder, i) => (
-      <div key={i}>
-        <p>Buyer: {saleOrder.buyer}</p>
-        <p>DataHash: {saleOrder.dataHash}</p>
-        <button
-          onClick={() => fulfillSaleOrder(
-								saleOrder.dataHash, 
-								saleOrder.buyer, 
-								saleOrder.buyerPublicKey, 
-								privateKey,
-								saleOrder
-							)}
-          className='pure-button pure-button-primary'
-						>Approve</button>
-      </div>
-				))}
-    {!saleOrders.filter(saleOrder => !saleOrder.fulfilled).length && <h2>No sale orders. Get out there and sell yourself!</h2>}
+  <div className="frameit">
+    <div style={{width: '60%'}} >
+      {step && <div>
+        {step}
+        <LinearProgress />
+        <br />
+        <br />
+      </div>}
+      {error && <p style={{color: 'red'}}>{error}</p>}
+      {!!saleOrders.filter(saleOrder => !saleOrder.fulfilled).length && <div>
+        <p>** Disclaimer: We need your private key to decrypt the data to share. **</p>
+        <label style={{ fontSize: 20}}>
+  						Private Key
+          <span />
+          <input
+            type='password'
+            value={privateKey}
+            onChange={this.onChange}
+  						/>
+        </label>
+      </div>}
+      {saleOrders.filter(saleOrder => !saleOrder.fulfilled).map((saleOrder, i) => (
+        <div key={i}>
+          <p>Buyer:
+            <br />
+            {saleOrder.buyer}
+          </p>
+          <p>DataHash:
+            <br />
+            {saleOrder.dataHash}</p>
+          <button
+            onClick={() => fulfillSaleOrder(
+  								saleOrder.dataHash,
+  								saleOrder.buyer,
+  								saleOrder.buyerPublicKey,
+  								privateKey,
+  								saleOrder
+  							)}
+            className='pure-button pure-button-primary'
+  						>Approve</button>
+        </div>
+  				))}
+      {!saleOrders.filter(saleOrder => !saleOrder.fulfilled).length && <h2>No sale orders. Get out there and sell yourself!</h2>}
+    </div>
   </div>
 		);
 	}
