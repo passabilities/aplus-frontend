@@ -51,14 +51,14 @@ class SearchForm extends Component {
 
     const buyButton = (dataHash, price) =>
       <button className='pure-button pure-button-primary' onClick={this.buy(dataHash, price)} >Buy</button>;
-    
+
     const searchResults = (records) =>
-      records.map(record => {
+      records.map((record, i) => {
         try{
           const metadata = JSON.parse(record.metadata.replace(", }", "}"));
 
           var converter = new showdown.Converter();
-          var htmlMetadata  = converter.makeHtml(metadata["preview"]);   
+          var htmlMetadata  = converter.makeHtml(metadata["preview"]);
 
           let price = 0;
 
@@ -86,7 +86,7 @@ class SearchForm extends Component {
         }
 
       });
-    
+
     if (escrow) {
       var res = JSON.parse(this.props.search.results);
       return (
