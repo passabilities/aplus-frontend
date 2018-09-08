@@ -9,7 +9,6 @@ class BuyingEscrows extends Component {
 
 	render() {
 		const { buyOrders } = this.props;
-		console.log(buyOrders)
 		return (
   <div>
     {buyOrders.map((buyOrder, i) => {

@@ -53,7 +53,6 @@ export const getOpenSaleOrders = () => async dispatch => {
       getUnique(await escrowsContract.getBuyersForDataHash(dh))
     )
   );
-  console.log(buyersForDataHashes)
   const escrowArrays = await Promise.all(
     escrowedDataHashes.map((dh, i) => {
       const buyers = buyersForDataHashes[i];
@@ -133,9 +132,6 @@ export const fulfillSaleOrder = (
   dispatch(updateFulfillmentStep("Re-encrypting file for buyer . . ."));
 
   try {
-    console.log(viewerPublicKey)
-    return
-
     reencrypted = await encrypt(
       viewerPublicKey,
       decryptedData
