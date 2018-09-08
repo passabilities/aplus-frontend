@@ -20,16 +20,19 @@ class BuyingEscrows extends Component {
 				}
 				return(
   <div key={i}>
-    <p>Owner Address: {buyOrder[1]}</p>
-    <p>DataHash: {dataHash}</p>
+    <p>Owner Address:
+      <br />
+      {buyOrder[1]}</p>
+    <p>DataHash:
+      <br />
+      {dataHash}</p>
     <div>
-      <button 
+      <button
         className='pure-button pure-button-primary'
-        disabled
-							>{buttonText}</button>
+        disabled>{buttonText}</button>
     </div>
-  </div>	
-				);		
+  </div>
+				);
 			})}
   </div>
 		);
