@@ -6,18 +6,7 @@ class Faucet extends Component {
 
     this.state = {
       address: '',
-      privateKey: '',
-      address:'',
     };
-
-    // Set variables pass as url arguments
-    window.location.search.substr(1).split('&').forEach((param) => {
-      const key = param.split('=')[0];
-      const val = param.split('=')[1];
-      if (key === 'address') {
-        this.state['address'] = val;
-      }
-    });
   }
 
   onInputChange = (property) => (event) => {
@@ -33,7 +22,7 @@ class Faucet extends Component {
       return alert('Please fill the address');
     }
 
-    // fix it?
+    // add stuff to acceses TCR Token
     this.props.onGetRecordSubmit(address);
   }
 
@@ -56,7 +45,7 @@ class Faucet extends Component {
 
               <br />
 
-              <button type='submit' className='pure-button pure-button-primary'>Claim TCR Token</button>
+              <button type='submit' className='pure-button pure-button-primary'>Claim APLUS Token</button>
             </fieldset>
           </form>
         </div>
