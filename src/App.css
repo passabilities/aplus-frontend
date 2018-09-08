@@ -144,6 +144,11 @@ code {
   background-image: linear-gradient(to right, #FFD700, #EEE8AF);
 }
 
+.claim-text {
+  color: #29AF1D;
+  font-size: 20px;
+}
+
 .frameit {
   margin-bottom: 10px;
   padding: 8px;
