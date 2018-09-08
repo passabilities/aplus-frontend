@@ -5,7 +5,7 @@ class Faucet extends Component {
     super(props);
 
     this.state = {
-      dataHash: '',
+      address: '',
       privateKey: '',
       address:'',
     };
@@ -14,8 +14,8 @@ class Faucet extends Component {
     window.location.search.substr(1).split('&').forEach((param) => {
       const key = param.split('=')[0];
       const val = param.split('=')[1];
-      if (key === 'dataHash') {
-        this.state['dataHash'] = val;
+      if (key === 'address') {
+        this.state['address'] = val;
       }
     });
   }
@@ -27,14 +27,14 @@ class Faucet extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const dataHash = event.target.elements.dataHash.value;
+    const address = event.target.elements.address.value;
 
-    if (dataHash.length < 2) {
+    if (address.length < 2) {
       return alert('Please fill the address');
     }
 
     // fix it?
-    this.props.onGetRecordSubmit(dataHash);
+    this.props.onGetRecordSubmit(address);
   }
 
 
@@ -48,7 +48,7 @@ class Faucet extends Component {
           <form className='pure-form pure-form-stacked' onSubmit={this.handleSubmit}>
             <fieldset>
               <br />
-              <label htmlFor='dataHash'>Address</label>
+              <label htmlFor='address'>Address</label>
               {/* fix with address */}
               <input id='Address' type='text' value={this.state.address} onChange={this.onInputChange('address')} placeholder='Address' />
 
