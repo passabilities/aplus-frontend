@@ -56,7 +56,7 @@ class GetRecordForm extends Component {
 
           <br />
 
-          <button type='submit' className='pure-button pure-button-primary'>Get Record</button>
+          <button type='submit' className='pure-button pure-button-primary'>Get Notes</button>
         </fieldset>
       </form>;
 
