@@ -4,8 +4,9 @@ class Escrow {
 		this.seller = solidityArray[1];
 		this.paid = solidityArray[2];
 		this.fulfilled = solidityArray[3];
-		this.dataHash = solidityArray[4];
-		this.buyerPublicKey = solidityArray[5];
+		this.tokensClaimed = solidityArray[4];
+		this.dataHash = solidityArray[5];
+		this.buyerPublicKey = solidityArray[6];
 	}
 }
 

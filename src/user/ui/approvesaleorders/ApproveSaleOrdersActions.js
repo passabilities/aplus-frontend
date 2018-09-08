@@ -2,7 +2,6 @@ import store from "../../../store";
 import AplusEscrows from "./../../../contracts/AplusEscrows.json";
 import TruffleContract from "truffle-contract";
 import Escrow from "./../../../models/Escrow";
-import { Buffer } from "safe-buffer";
 import { encrypt, decrypt } from "./../../../util";
 
 export const GET_OPEN_SALE_ORDERS = "GET_OPEN_SALE_ORDERS";
@@ -130,7 +129,7 @@ export const fulfillSaleOrder = (
 
   try {
     reencrypted = await encrypt(
-      new Buffer(viewerPublicKey, "hex"),
+      viewerPublicKey,
       decryptedData
     );
   } catch (e) {
