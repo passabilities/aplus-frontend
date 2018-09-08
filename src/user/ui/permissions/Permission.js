@@ -7,8 +7,14 @@ class Permission extends Component {
 
     return (
       <div>
-        <p>Record: {permission.dataHash}</p>
-        <p>Viewer: {permission.viewer}</p>
+        <p>Record:
+          <br />
+          {permission.dataHash}
+        </p>
+        <p>Viewer:
+          <br />
+          {permission.viewer}
+        </p>
         <button
           className='pure-button pure-button-primary'
           onClick={() => revoke(permission)}
