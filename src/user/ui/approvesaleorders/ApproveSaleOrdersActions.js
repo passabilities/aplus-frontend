@@ -1,5 +1,5 @@
 import store from "../../../store";
-import DDexEscrows from "./../../../contracts/DDexEscrows.json";
+import AplusEscrows from "./../../../contracts/AplusEscrows.json";
 import TruffleContract from "truffle-contract";
 import Escrow from "./../../../models/Escrow";
 import { Buffer } from "safe-buffer";
@@ -43,7 +43,7 @@ const showFulfillmentError = message => ({
 
 export const getOpenSaleOrders = () => async dispatch => {
   const [ownerAddress] = await store.getState().auth.web3.eth.getAccounts();
-  const escrowsContract = await getContract(DDexEscrows);
+  const escrowsContract = await getContract(AplusEscrows);
   const escrowedDataHashes = await escrowsContract.getEscrowDataHashesBySeller(
     ownerAddress
   );
@@ -78,7 +78,7 @@ export const fulfillSaleOrder = (
   let file, decryptedData, reencrypted, viewerFile;
 
   const linnia = store.getState().auth.linnia;
-  const escrowsContract = await getContract(DDexEscrows);
+  const escrowsContract = await getContract(AplusEscrows);
   const ipfs = linnia.ipfs;
 
   const record = await linnia.getRecord(dataHash);

@@ -1,5 +1,5 @@
 import store from '../../../store';
-import DDexEscrows from './../../../contracts/DDexEscrows.json';
+import AplusEscrows from './../../../contracts/AplusEscrows.json';
 import TruffleContract from 'truffle-contract';
 
 export const GET_BUY_ORDERS = 'GET_BUY_ORDERS';
@@ -19,7 +19,7 @@ const revokeBuyingOrder = (buyOrder) => ({
 export const getOpenBuyingOrders = () => async (dispatch) => {
 	const [ownerAddress] = await store.getState().auth.web3.eth.getAccounts()
 	const { linnia } = store.getState().auth
-	const escrowsContract = await getContract(DDexEscrows);
+	const escrowsContract = await getContract(AplusEscrows);
 	const escrowedDataHashes = await escrowsContract.getEscrowDataHashesByBuyer(ownerAddress);
 	const escrowArrays = await Promise.all(escrowedDataHashes.map(dh => escrowsContract.escrows.call(dh, ownerAddress)));
 	const permissions = await Promise.all(escrowArrays.map(escrow => linnia.getPermission(escrow[4], ownerAddress)));
@@ -33,7 +33,7 @@ export const getOpenBuyingOrders = () => async (dispatch) => {
 
 export const revokeOrder = (dataHash) => async (dispatch) => {
 	const [ownerAddress] = await store.getState().auth.web3.eth.getAccounts()
-	const escrowsContract = await getContract(DDexEscrows);
+	const escrowsContract = await getContract(AplusEscrows);
 	await escrowsContract.revokeEscrow(dataHash, { 
 		from: ownerAddress,
 		gas: 200000,

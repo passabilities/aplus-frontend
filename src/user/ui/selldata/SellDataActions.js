@@ -1,6 +1,6 @@
 import store from '../../../store'
 import axios from 'axios'
-import DDexListings from './../../../contracts/DDexListings.json';
+import AplusListings from './../../../contracts/AplusListings.json';
 import TruffleContract from 'truffle-contract';
 
 export const SET_SELLDATA = "SET_SELLDATA"
@@ -26,7 +26,7 @@ export const getSellData = () => async (dispatch) => {
 
 export const createListing = (data, price) => async (dispatch) => {
   const [ownerAddress] = await store.getState().auth.web3.eth.getAccounts()
-  const listingsContract = await getContract(DDexListings);
+  const listingsContract = await getContract(AplusListings);
 
   dispatch(setStep('Creating your listing . . . '))
 

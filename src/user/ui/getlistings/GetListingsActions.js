@@ -1,6 +1,6 @@
 import store from '../../../store';
-import DDexListings from './../../../contracts/DDexListings.json';
-import DDexEscrows from './../../../contracts/DDexEscrows.json';
+import AplusListings from './../../../contracts/AplusListings.json';
+import AplusEscrows from './../../../contracts/AplusEscrows.json';
 import TruffleContract from 'truffle-contract';
 import Listing from './../../../models/Listing';
 import Escrow from './../../../models/Escrow';
@@ -26,8 +26,8 @@ const setStep = (step) => ({
 
 export const getListings = () => async (dispatch) => {
 	const [ownerAddress] = await store.getState().auth.web3.eth.getAccounts()
-	const listingsContract = await getContract(DDexListings);
-	const escrowsContract = await getContract(DDexEscrows);
+	const listingsContract = await getContract(AplusListings);
+	const escrowsContract = await getContract(AplusEscrows);
 
 	const listedDataHashes = await listingsContract.getListedDataHashes();
 	const escrowedDataHashes = await escrowsContract.getEscrowDataHashesByBuyer(ownerAddress);
@@ -50,7 +50,7 @@ export const getListings = () => async (dispatch) => {
 
 export const buyListing = (listing, publicKey) => async (dispatch) => {
 	const [ownerAddress] = await store.getState().auth.web3.eth.getAccounts()
-	const escrowsContract = await getContract(DDexEscrows);
+	const escrowsContract = await getContract(AplusEscrows);
 
 	dispatch(setStep('Creating a buy order . . . '));
 
