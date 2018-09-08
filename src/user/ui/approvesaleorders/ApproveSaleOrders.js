@@ -21,7 +21,7 @@ class ApproveSaleOrders extends Component {
     const { privateKey } = this.state;
 
 		return (
-  <div className="frameit">
+  <div className='frameit'>
     <div style={{width: '60%'}} >
       {step && <div>
         {step}
