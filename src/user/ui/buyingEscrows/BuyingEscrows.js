@@ -12,10 +12,10 @@ class BuyingEscrows extends Component {
 		return (
   <div>
     {buyOrders.map((buyOrder, i) => {
-				var buttonText = "Processing";
+				var buttonText = "Pending";
 				var dataHash = buyOrder[5];
 				if(buyOrder[3]){
-					buttonText = "Closed";
+					buttonText = "Completed";
 					dataHash = buyOrder[5];
 				}
 				return(
