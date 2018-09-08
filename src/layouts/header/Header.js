@@ -16,7 +16,7 @@ class Header extends Component {
                 className='pure-menu-link'
                 onClick={this.navigateTo('/approve-sale-orders')}
               >
-                Approve Sale Orders
+                Approve Note Sales
               </span>
             </li>
             <li className='pure-menu-item'>
@@ -24,7 +24,7 @@ class Header extends Component {
                 className='pure-menu-link'
                 onClick={this.navigateTo('/buying-orders')}
               >
-                Open Buying Orders
+                Purchase History
               </span>
             </li>
             <li className='pure-menu-item'>
@@ -32,18 +32,17 @@ class Header extends Component {
                 className='pure-menu-link'
                 onClick={this.navigateTo('/get-data')}
               >
-                Get Data
+                Get Notes
               </span>
             </li>
           </span>
         </ul>
         <span
           onClick={this.navigateTo('/')}
-          className='pure-menu-heading pure-menu-link'
+          className='pure-menu-heading pure-menu-link logo-container'
         >
-          Aplus
+          aplus<span className='plus-sign-logo'>+</span>
         </span>
-        <img src='' class='logo'/>
       </nav>
     );
   }
