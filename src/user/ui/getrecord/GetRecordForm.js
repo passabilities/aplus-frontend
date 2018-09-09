@@ -46,11 +46,6 @@ class GetRecordForm extends Component {
     this.props.onGetRecordDecrypt(this.props.record.data, privateKey);
   }
 
-  handleTCRToken = (event) => {
-    event.preventDefault();
-    // ... handle here
-  }
-
   render () {
     const comp1 = () =>
       <form className='pure-form pure-form-stacked' onSubmit={this.handleSubmit}>
@@ -95,8 +90,7 @@ class GetRecordForm extends Component {
             </div>
 
             {/* decrypted data */}
-
-            <form className='pure-form pure-form-stacked' onSubmit={this.handleDecrypt}>
+            <form className='pure-form pure-form-stacked'>
               <fieldset>
                 <p className="claim-text">Enjoy your a+plus notes!</p>
                 <p className="claim-text">Please accept these APLUS tokens. You can use them to challenge a+plus Experts if you disagree with their credibility.</p>
