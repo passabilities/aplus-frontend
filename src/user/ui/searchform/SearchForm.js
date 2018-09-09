@@ -56,8 +56,18 @@ class SearchForm extends Component {
     const buyButton = (dataHash, price) =>
       <button className='pure-button pure-button-primary' onClick={this.buy(dataHash, price)} >Buy</button>;
 
+    const checks = (sigCount) => {
+      const arr = []
+      for (let i = 0; i < sigCount; i++) {
+        arr.push(
+          <i className="fas fa-check-circle fa-2x fright" style={{color:"green"}}></i>
+        )
+      }
+      return arr
+    }
+
     const searchResults = (records) =>
-      records.map((record, i) => {
+      records.map((record) => {
         try{
           const metadata = JSON.parse(record.metadata.replace(", }", "}"));
 
@@ -72,34 +82,34 @@ class SearchForm extends Component {
             }
           });
 
-          if(price != 0){
-            return (
-              <div className='frameit' key={record.dataHash}>
-                <i className="fas fa-check-circle fa-2x fright" style={{color:"green"}}></i>
-                <h3 className='price'>ETH {price}</h3>
-                <h2>University: {metadata["university"]}</h2>
-                <h3>Course Name: {metadata["course-name"]}</h3>
-                {buyButton(record.dataHash, price)}
-                <div dangerouslySetInnerHTML={{ __html: htmlMetadata }}  />
-                <p>Owner:
-                  <br />
-                  {record.owner}
-                </p>
-                <p>Datahash:
-                  <br />
-                  {record.dataHash}
-                </p>
+        if(price != 0){
+          console.log(record.sigCount)
+          return (
+            <div className='frameit' key={record.dataHash}>
+              {checks(record.sigCount)}
+              <h3 className='price'>ETH {price}</h3>
+              <h2>University: {metadata["university"]}</h2>
+              <h3>Course Name: {metadata["course-name"]}</h3>
+              {buyButton(record.dataHash, price)}
+              <div dangerouslySetInnerHTML={{ __html: htmlMetadata }}  />
+              <p>Owner:
                 <br />
-              </div>);
+                {record.owner}
+              </p>
+              <p>Datahash:
+                <br />
+                {record.dataHash}
+              </p>
+              <br />
+            </div>);
           }
         } catch(e) {
-          return(<p />);
         }
 
-      });
+    });
 
     if (escrow) {
-      var res = JSON.parse(this.props.search.results);
+      var res = this.props.search.results;
       return (
         <div>
           <h2 className='price-congrats'>Congratulations, your offer is being processed!</h2>
@@ -109,7 +119,7 @@ class SearchForm extends Component {
       );
     } else{
       if (this.props.search.results) {
-        var res = JSON.parse(this.props.search.results);
+        var res = this.props.search.results;
         if (res.constructor !== Array) {
           res = [res];
         }
