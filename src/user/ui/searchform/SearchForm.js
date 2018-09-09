@@ -56,13 +56,17 @@ class SearchForm extends Component {
     const buyButton = (dataHash, price) =>
       <button className='pure-button pure-button-primary' onClick={this.buy(dataHash, price)} >Buy</button>;
 
-    const checks = (sigCount) => {
+    const checks = ({ sigCount, tcrCount }) => {
+      const tcrStartIndex = sigCount - tcrCount
       const arr = []
+
       for (let i = 0; i < sigCount; i++) {
+        const faClass = i < tcrStartIndex ? 'fa-circle' : 'fa-check-circle'
         arr.push(
-          <i className="fas fa-check-circle fa-2x fright" style={{color:"green"}}></i>
+          <i className={`fas ${faClass} fa-2x fright`} style={{color:"green"}}></i>
         )
       }
+
       return arr
     }
 
@@ -85,7 +89,7 @@ class SearchForm extends Component {
         if(price != 0){
           return (
             <div className='frameit' key={record.dataHash}>
-              {checks(record.sigCount)}
+              {checks(record)}
               <h3 className='price'>ETH {price}</h3>
               <h2>University: {metadata["university"]}</h2>
               <h3>Course Name: {metadata["course-name"]}</h3>

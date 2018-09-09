@@ -55,6 +55,7 @@ export function search (property) {
     }
 
     const linnia = store.getState().auth.linnia;
+    const { records } = await linnia.getContractInstances();
 
     request(req, async (error, response, body) => {
       if (error) {
@@ -62,11 +63,22 @@ export function search (property) {
       }
 
       const resArray = JSON.parse(body)
-      // dispatch(assignSearch(resArray));
+      dispatch(assignSearch(resArray));
+
+      const tcrExperts = await fetch('https://api-ropsten.etherscan.io/api?module=logs&action=getLogs&fromBlock=4000000&toBlock=latest&address=0xb9d7152FAF3685732d5D67baDc4fC58af0E65a81&topic0=0xc4497224aa78dd50c9b3e344aab02596201ca1e6dca4057a91a6c02f83f4f6c1')
+        .then((res) => res.json())
+        .then(({ result }) => result.map(({ topics: [ , address ] }) => address))
 
       const resultsArray = resArray.map( async (serverRecord) => {
+        let tcrCount = 0
+        for (const expert of tcrExperts) {
+          const exists = await records.sigExists(serverRecord.dataHash, expert)
+          if (exists) tcrCount++
+        }
+
         const record = await linnia.getRecord(serverRecord.dataHash)
         serverRecord.sigCount = Number(record.sigCount.toString())
+        serverRecord.tcrCount = tcrCount
 
         return serverRecord
       } )
