@@ -46,6 +46,11 @@ class GetRecordForm extends Component {
     this.props.onGetRecordDecrypt(this.props.record.data, privateKey);
   }
 
+  handleTCRToken = (event) => {
+    event.preventDefault();
+    this.props.onGetRecordDecrypt(this.props.record.data, privateKey);
+  }
+
   render () {
     const comp1 = () =>
       <form className='pure-form pure-form-stacked' onSubmit={this.handleSubmit}>
@@ -63,11 +68,11 @@ class GetRecordForm extends Component {
     // Got Results
     if (this.props.record.data) {
       // To decrypt
-      if (this.props.record.data.decrypted) {
+      if (!this.props.record.data.decrypted) {
         return (
           <div>
             {comp1()}
-            <form className='pure-form pure-form-stacked' onSubmit={this.handleDecrypt}>
+            <form className='pure-form pure-form-stacked' onSubmit={this.handleTCRToken}>
               <fieldset>
                 <label htmlFor='privateKey'>Private Key</label>
                 <input id='privateKey' type='password' value={this.state.privateKey} onChange={this.onInputChange('privateKey')} placeholder='Private Key' />
