@@ -21,7 +21,7 @@ class ApproveSaleOrders extends Component {
     const { privateKey } = this.state;
 
 		return (
-  <div className='frameit'>
+  <div>
     <div style={{width: '60%'}} >
       {step && <div>
         {step}
@@ -42,8 +42,10 @@ class ApproveSaleOrders extends Component {
   						/>
         </label>
       </div>}
+      <br />
       {saleOrders.filter(saleOrder => !saleOrder.fulfilled).map((saleOrder, i) => (
-        <div key={i}>
+        <div key={i} className='frameit'>
+          <br />
           <p>Buyer:
             <br />
             {saleOrder.buyer}

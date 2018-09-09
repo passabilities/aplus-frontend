@@ -16,6 +16,7 @@ import SellData from './user/layouts/selldata/SellData';
 import ApproveSaleOrders from './user/layouts/approvesaleorders/ApproveSaleOrders';
 import BuyingEscrows from './user/layouts/buyingEscrows/BuyingEscrows';
 import GetRecord from './user/layouts/getrecord/GetRecord';
+import Faucet from './user/layouts/tcrtokenfaucet/Faucet';
 
 import ProtectedRoute from './ProtectedRoute';
 
@@ -59,6 +60,12 @@ class App extends Component {
               path='/get-data'
               authError={authError}
               component={GetRecord}
+            />
+            <ProtectedRoute
+              isAuthenticated={isAuthenticated}
+              path='/faucet'
+              authError={authError}
+              component={Faucet}
             />
             <ProtectedRoute
               isAuthenticated={isAuthenticated}
