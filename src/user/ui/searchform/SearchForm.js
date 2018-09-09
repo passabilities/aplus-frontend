@@ -83,7 +83,6 @@ class SearchForm extends Component {
           });
 
         if(price != 0){
-          console.log(record.sigCount)
           return (
             <div className='frameit' key={record.dataHash}>
               {checks(record.sigCount)}
