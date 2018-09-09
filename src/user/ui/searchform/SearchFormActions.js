@@ -62,15 +62,17 @@ export function search (property) {
       }
 
       const resArray = JSON.parse(body)
-      dispatch(assignSearch(resArray));
+      // dispatch(assignSearch(resArray));
 
-      resArray.forEach( async (serverRecord, i) => {
+      const resultsArray = resArray.map( async (serverRecord) => {
         const record = await linnia.getRecord(serverRecord.dataHash)
-        resArray[i].sigCount = Number(record.sigCount.toString())
-        console.log(record.dataHash, Number(record.sigCount.toString()))
-      } )   
+        serverRecord.sigCount = Number(record.sigCount.toString())
 
-      dispatch(assignSearch(resArray));
+        return serverRecord
+      } )
+      const results = await Promise.all(resultsArray)
+
+      dispatch(assignSearch(results));
     });
 
     const [ownerAddress] = await store.getState().auth.web3.eth.getAccounts();
