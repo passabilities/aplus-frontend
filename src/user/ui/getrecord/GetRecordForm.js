@@ -66,7 +66,7 @@ class GetRecordForm extends Component {
       if (!this.props.record.data.decrypted) {
         return (
           <div>
-            {/*comp1()*/}
+            {comp1()}
             <form className='pure-form pure-form-stacked' onSubmit={this.handleTCRToken}>
               <fieldset>
                 <label htmlFor='privateKey'>Private Key</label>
@@ -83,14 +83,13 @@ class GetRecordForm extends Component {
       } else { // Decrypted File
         return (
           <div>
-            {/*comp1()*/}
+            {comp1()}
             <div>
               <h2>Decryted Data</h2>
               <p>{this.props.record.data.decrypted}</p>
             </div>
 
             {/* decrypted data */}
-
             <form className='pure-form pure-form-stacked'>
               <fieldset>
                 <p className="claim-text">Enjoy your a+plus notes!</p>
