@@ -48,7 +48,7 @@ class GetRecordForm extends Component {
 
   handleTCRToken = (event) => {
     event.preventDefault();
-    this.props.onGetRecordDecrypt(this.props.record.data, privateKey);
+    // ... handle here
   }
 
   render () {
