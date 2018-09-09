@@ -62,12 +62,12 @@ export function search (property) {
         console.error(error.stack);
       }
 
-      const resArray = JSON.parse(body)
+      const resArray = JSON.parse(body);
       dispatch(assignSearch(resArray));
 
       const tcrUserHashes = await fetch('https://api-ropsten.etherscan.io/api?module=logs&action=getLogs&fromBlock=4000000&toBlock=latest&address=0xb9d7152FAF3685732d5D67baDc4fC58af0E65a81&topic0=0xc4497224aa78dd50c9b3e344aab02596201ca1e6dca4057a91a6c02f83f4f6c1')
         .then((res) => res.json())
-        .then(({ result }) => result.map(({ topics: [ , address ] }) => address))
+        .then(({ result }) => result.map(({ topics: [ , address ] }) => address));
 
       const expertUsers = [
         [ '0xddb0dd83c8b70baf9950b9bb7e8d0bf23ecf2c78', '0xe01c42921acb55c60350dacc092b60329f1b6abdecc81400c447d47dd6344a96' ],
@@ -77,34 +77,34 @@ export function search (property) {
         [ '0x7423fe4d8609eb56383dbd4731f0cb92b79f41fe', '0x4b081ca93d99b13928e027732f505e644691cbab51e3daad3f2e068b649b67c2' ],
         [ '0xe6cce27f668c11ef211f8db8471af435b8e5548b', '0xe3d311494ff8cb5762a17375479e6d1785842edf23205516cfcfc06586a8fe04' ],
         [ '0xa067e3ce12828afcd5bac9efa43ea13573345908', '0xb8bb68d27320a4dde494da4d8cde39f6cd5b6eda69748353886942faf0dd4dc0' ],
-        [ '0x944cf20ce46b688bd38e765cbf712437cec7015e', '0x70161da9e6ce9a832ee702df34c04bdacf570c51db1a237c3f140abf18521680' ]
-      ]
+        [ '0x944cf20ce46b688bd38e765cbf712437cec7015e', '0x70161da9e6ce9a832ee702df34c04bdacf570c51db1a237c3f140abf18521680' ],
+      ];
 
-      const list = []
+      const list = [];
       tcrUserHashes.forEach((userHash) => {
         expertUsers.forEach((expert) => {
-          const [ address, hash ] = expert
+          const [ address, hash ] = expert;
           if (hash === userHash)
-            list.push(expert)
-        })
-      })
-      console.log(list)
+            list.push(expert);
+        });
+      });
+      console.log(list);
 
       const resultsArray = resArray.map( async (serverRecord) => {
-        let tcrCount = 0
+        let tcrCount = 0;
         for (const [ address ] of list) {
-          const exists = await records.sigExists(serverRecord.dataHash, address)
-          console.log(exists)
-          if (exists) tcrCount++
+          const exists = await records.sigExists(serverRecord.dataHash, address);
+          console.log(exists);
+          if (exists) tcrCount++;
         }
 
-        const record = await linnia.getRecord(serverRecord.dataHash)
-        serverRecord.sigCount = Number(record.sigCount.toString())
-        serverRecord.tcrCount = tcrCount
+        const record = await linnia.getRecord(serverRecord.dataHash);
+        serverRecord.sigCount = Number(record.sigCount.toString());
+        serverRecord.tcrCount = tcrCount;
 
-        return serverRecord
-      } )
-      const results = await Promise.all(resultsArray)
+        return serverRecord;
+      } );
+      const results = await Promise.all(resultsArray);
 
       dispatch(assignSearch(results));
     });

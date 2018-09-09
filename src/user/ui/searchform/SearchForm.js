@@ -47,8 +47,8 @@ class SearchForm extends Component {
 
           <button type='submit' className='pure-button pure-button-primary'>Search</button>
           <div style={{display: 'flex', flexDirection: 'column', marginTop: '20px', marginBottom: '20px', padding: '5px', borderStyle: "solid"}}>
-            <div style={{display:"inline", margin:"10px"}}><i className="fas fa-check-circle fa-2x" style={{color:"green"}}></i> A verified Expert from the a+plus Expert List has attested to the quality of these notes. </div>
-            <div style={{display:"inline", margin:"10px"}}><i className="fas fa-circle fa-2x" style={{color:"green"}}></i> A Non-expert has attested to the quality of these notes.</div>
+            <div style={{display:"inline", margin:"10px"}}><i className='fas fa-check-circle fa-2x' style={{color:"green"}} /> A verified Expert from the a+plus Expert List has attested to the quality of these notes. </div>
+            <div style={{display:"inline", margin:"10px"}}><i className='fas fa-circle fa-2x' style={{color:"green"}} /> A Non-expert has attested to the quality of these notes.</div>
           </div>
         </fieldset>
       </form>;
@@ -57,18 +57,18 @@ class SearchForm extends Component {
       <button className='pure-button pure-button-primary' onClick={this.buy(dataHash, price)} >Buy</button>;
 
     const checks = ({ sigCount, tcrCount }) => {
-      const tcrStartIndex = sigCount - tcrCount
-      const arr = []
+      const tcrStartIndex = sigCount - tcrCount;
+      const arr = [];
 
       for (let i = 0; i < sigCount; i++) {
-        const faClass = i < tcrStartIndex ? 'fa-circle' : 'fa-check-circle'
+        const faClass = i < tcrStartIndex ? 'fa-circle' : 'fa-check-circle';
         arr.push(
-          <i key={`attestor-${i}`} className={`fas ${faClass} fa-8x fright`} style={{color:"green"}}></i>
-        )
+          <i key={`attestor-${i}`} className={`fas ${faClass} fa-8x fright`} style={{color:"green"}} />
+        );
       }
 
-      return arr
-    }
+      return arr;
+    };
 
     const searchResults = (records) =>
       records.map((record) => {

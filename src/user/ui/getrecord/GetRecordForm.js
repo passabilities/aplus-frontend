@@ -92,8 +92,8 @@ class GetRecordForm extends Component {
               <h2>Decryted Data</h2>
               <p>{this.props.record.data.decrypted}</p>
             </div>
-            <p className="claim-text">Enjoy your a+plus notes!</p>
-            <p className="claim-text">Please accept these APLUS tokens. You can use them to challenge a+plus Experts if you disagree with their credibility.</p>
+            <p className='claim-text'>Enjoy your a+plus notes!</p>
+            <p className='claim-text'>Please accept these APLUS tokens. You can use them to challenge a+plus Experts if you disagree with their credibility.</p>
             <br />
             <button type='submit' className='pure-button pure-button-primary' onClick={this.claimTokens(this.state.dataHash)}>Claim your APLUS tokens!</button>
           </div>

@@ -17,7 +17,7 @@ export function claimTokens (dataHash) {
   // Get Record from Linnia
   return async (dispatch) => {
     const [owner] = await store.getState().auth.web3.eth.getAccounts();
-    const web3 = store.getState().auth.web3
+    const web3 = store.getState().auth.web3;
     var faucetContract = new web3.eth.Contract(AplusFaucet.abi, "0x54cb8dc65b4c93225fec2d462f07aae4e4ee691e");
     try{
       await faucetContract.methods.withdrawl("0xA90C8007Caf00fC9bf8178F25e40F6b48E26DCCA", 
@@ -25,9 +25,9 @@ export function claimTokens (dataHash) {
         from: owner,
         gasPrice,
         gas,
-      })
+      });
     }catch(e){
-      console.log(e)
+      console.log(e);
     }
   };
 }
