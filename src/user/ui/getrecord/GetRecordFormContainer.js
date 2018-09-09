@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import GetRecordForm from './GetRecordForm';
-import { getRecord, getDecryptedRecord } from './GetRecordFormActions';
+import { getRecord, getDecryptedRecord, claimTokens } from './GetRecordFormActions';
 
 const mapStateToProps = (state, ownProps) => {
   return { record: state.record };
@@ -13,6 +13,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     onGetRecordDecrypt: (record, privateKey) => {
       dispatch(getDecryptedRecord(record, privateKey));
+    },
+    onClaimTokens: (dataHash) => {
+      dispatch(claimTokens(dataHash));
     },
   };
 };

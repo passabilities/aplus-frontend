@@ -63,7 +63,7 @@ class SearchForm extends Component {
       for (let i = 0; i < sigCount; i++) {
         const faClass = i < tcrStartIndex ? 'fa-circle' : 'fa-check-circle'
         arr.push(
-          <i className={`fas ${faClass} fa-2x fright`} style={{color:"green"}}></i>
+          <i key={`attestor-${i}`} className={`fas ${faClass} fa-2x fright`} style={{color:"green"}}></i>
         )
       }
 

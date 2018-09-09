@@ -35,6 +35,10 @@ class GetRecordForm extends Component {
     this.props.onGetRecordSubmit(dataHash);
   }
 
+  claimTokens = (dataHash) => (event) => {
+    this.props.onClaimTokens(dataHash);
+  }
+
   handleDecrypt = (event) => {
     event.preventDefault();
     const privateKey = event.target.elements.privateKey.value;
@@ -67,7 +71,7 @@ class GetRecordForm extends Component {
         return (
           <div>
             {comp1()}
-            <form className='pure-form pure-form-stacked' onSubmit={this.handleTCRToken}>
+            <form className='pure-form pure-form-stacked' onSubmit={this.handleDecrypt}>
               <fieldset>
                 <label htmlFor='privateKey'>Private Key</label>
                 <input id='privateKey' type='password' value={this.state.privateKey} onChange={this.onInputChange('privateKey')} placeholder='Private Key' />
@@ -88,20 +92,14 @@ class GetRecordForm extends Component {
               <h2>Decryted Data</h2>
               <p>{this.props.record.data.decrypted}</p>
             </div>
-
-            {/* decrypted data */}
-            <form className='pure-form pure-form-stacked'>
-              <fieldset>
-                <p className="claim-text">Enjoy your a+plus notes!</p>
-                <p className="claim-text">Please accept these APLUS tokens. You can use them to challenge a+plus Experts if you disagree with their credibility.</p>
-                <br />
-                <button type='submit' className='pure-button pure-button-primary'>Claim your APLUS tokens!</button>
-              </fieldset>
-            </form>
+            <p className="claim-text">Enjoy your a+plus notes!</p>
+            <p className="claim-text">Please accept these APLUS tokens. You can use them to challenge a+plus Experts if you disagree with their credibility.</p>
+            <br />
+            <button type='submit' className='pure-button pure-button-primary' onClick={this.claimTokens(this.state.dataHash)}>Claim your APLUS tokens!</button>
           </div>
         );
       }
-    } else { // New Search
+    } else {
       return (comp1());
     }
   }
